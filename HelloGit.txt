@@ -1,0 +1,43 @@
+Hello Git: A Beginner's Tutorial on Git and GitLab
+
+
+
+Introduction
+
+
+This tutorial is for beginners who are new to Git and GitLab .
+
+Git is a "free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency." Use Git locally on your computer to manage software versions.
+
+GitLab is a DevOps platform. It can host your local Git repos for remote collaboration, and a whole lot more. Some other Git servers are GitHub and Bitbucket.
+
+Register with GitLab and Create a Repo
+Register for a GitLab account here or on your private GitLab server.
+From a web browser, log into your GitLab account.
+Create a new repo:
+
+Create a new project: https://gitlab.com/projects/new
+Click Create blank project.
+Project name: hello-world
+Click the Create project button.
+Your remote GitLab repo is created.
+
+
+
+
+
+Install Git Locally
+
+
+Make sure that you have Git locally on your computer.
+
+Check if you already have Git. From your local computer, open a macOS Terminal or Git Bash terminal and enter: git --version. If you have Git, then continue to Establish SSH Access.
+Install Git:
+Windows: https://git-scm.com/download/win
+macOS: From the Terminal app, enter git --version and follow instructions to install Xcode Command Line Tools.
+Introduce yourself to Git, using your real name and email:
+  $  git config --global user.name "Your Name"
+  $
+  $  git config --global user.email "youremail@mail.com"
+  $
+For the remainder of this tutorial, "terminal" refers to either the macOS Terminal app or Windows Git Bash terminal.
