@@ -41,3 +41,64 @@ Introduce yourself to Git, using your real name and email:
   $  git config --global user.email "youremail@mail.com"
   $
 For the remainder of this tutorial, "terminal" refers to either the macOS Terminal app or Windows Git Bash terminal.
+
+
+
+Establish SSH Access
+
+
+To access your remote GitLab repos from your local computer, you must first establish SSH access. This requires uploading your public SSH key from your computer to GitLab.
+
+Check if you already have an SSH key:
+
+From the macOS terminal, enter: cat ~/.ssh/id_rsa.pub | pbcopy
+From the Windows Git Bash terminal, enter: cat ~/.ssh/id_rsa.pub | clip
+If the command succeeds, then your public SSH key is in the clipboard. Otherwise go to the next step.
+Create your SSH key if it does not exist:
+
+Warning: Do NOT perform this step if the ~/.ssh/id_rsa.pub file already exists. This step will create/overwrite these files in your home directory: ~/.ssh/id_rsa ~/.ssh/id_rsa.pub.
+From the terminal, enter the following commands, replacing YOUREMAIL@MAIL.COM with your email address: cd ; ssh-keygen -o -t rsa -b 4096 -C "YOUREMAIL@MAIL.COM"
+Press the Enter key to accept all defaults. Do not specify a password, unless you want to enter a password each time you interact with the remote Git server.
+Go back to Step 1 above to copy your public SSH key to the clipboard.
+Add your SSH key to your GitLab account:
+
+From a web browser, log into your GitLab account.
+Go to SSH Keys: https://gitlab.com/-/profile/keys.
+In the Key textbox, paste your public SSH key from the clipboard.
+Click the Add key button.
+You now have SSH access from your local computer to your remote GitLab account.
+
+
+
+
+Use Git Locally and GitLab Remotely
+
+
+Now try to use Git locally and interact with your remote repos in GitLab.
+
+From a web browser, log into your GitLab account.
+Go to your hello-world repo, click the Clone button, and copy the Clone with SSH link to the clipboard.
+From your local computer, open a terminal and go (cd) to a directory to work from.
+Enter the following command to clone your GitLab repo locally on your computer. Paste the SSH link at the end. For example, if your GitLab username is JohnSmith:
+git clone git@gitlab.com:JohnSmith/hello-world.git
+There is now a hello-world folder locally on your computer. From the terminal, go into the folder: cd hello-world
+
+Enter git status to see the current state of the repo. There are no changes.
+
+Create a few local files:
+echo "red blue green" > colors.txt
+echo "apple cherry watermelon" > fruits.txt
+Enter git status to see the current state of the repo. Now there are local changes.
+
+Add the changes to the Git staging area:
+git add colors.txt fruits.txt  # or simply: git add .
+Commit the changes to the local repo:
+git commit -m "my first Git commit" .
+Now the two new files are part of your repo. Push your local changes to the master branch of the remote GitLab repo:
+git push origin master
+#  if you see an error, you may need to first: 
+#  git pull origin master
+#  to pull/merge the latest from the remote GitLab repo
+
+git status  # repo is clean
+From a web browser, go to your GitLab hello-world repo. Refresh the browser and verify that your local changes made it to the remote server.
